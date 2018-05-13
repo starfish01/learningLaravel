@@ -1,19 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Laravel</title>
+@extends('layouts.app')
 
-    <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-
-</head>
-<body>
-<div class="container">
-    <div class="content">
-        <div class="title">Laravel 5 - contact</div>
-    </div>
-
+@section('content')
     <h1>Contact Page</h1>
 
-</div>
-</body>
-</html>
+    @if(count($people))
+
+        <ul>
+
+        @foreach($people as $person)
+            <li>{{$person}}</li>
+        @endforeach
+        </ul>
+    @endif
+
+@stop
