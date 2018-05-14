@@ -106,9 +106,18 @@ Route::get('/insert',function(){
 
 
 
-Route::get('/findwhere', function (){
-   $posts = Post::where('id', 2)->orderBy('id','desc')->take(1)->get();
+//Route::get('/findwhere', function (){
+//   $posts = Post::where('id', 2)->orderBy('id','desc')->take(1)->get();
+//
+//   return $posts;
+//
+//});
 
-   return $posts;
+Route::get('/findmore',function (){
+
+    $posts = Post::findOrFail(1);
+    return $posts;
+
+    //$posts = Post::where('users_count', '<', 50)->firstOrFail();
 
 });
