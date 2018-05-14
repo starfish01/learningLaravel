@@ -1,5 +1,7 @@
 <?php
 
+use App\Post;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -11,10 +13,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-//return "sup";
-});
+//Route::get('/', function () {
+//    return view('welcome');
+////return "sup";
+//
+//
+//
+//});
 
 //Route::get('/about', function () {
 ////    return "about Page";
@@ -39,6 +44,71 @@ Route::get('/', function () {
 //Route::get('/post/{id}','PostsController@index');
 
 //Route::resource('posts','PostsController');
-Route::get('/contact','PostsController@contact');
+//Route::get('/contact','PostsController@contact');
+//
+//Route::get('post/{id}/{name}','PostsController@show_post');
 
-Route::get('post/{id}/{name}','PostsController@show_post');
+//-------------------------------------------------------------DataBase Queries
+
+//-----------------------------------------------------------Application Routes
+
+Route::get('/insert',function(){
+
+    DB::insert('insert into posts(title, content) values(?,?)', ['PHP With Laravel','PHP Laravel is the best thing thats happened to PHP']);
+
+});
+
+//Route::get('/read',function(){
+//
+//    $results = DB::select('select * from posts where id=?',[1]);
+//
+//    foreach ($results as $post){
+//        return $post->title;
+//    }
+//
+//});
+//
+//
+//Route::get('/update', function (){
+//
+//    $updated = DB::update('update posts set title = "updated title" where id =?', [1]);
+//
+//    return $updated;
+//
+//});
+//
+//Route::get('/delete', function(){
+//   $deleted = DB::delete('delete from posts where id=?', [1]);
+//
+//   return $deleted;
+//});
+
+
+//////-----------------------------Eloquent
+///
+///
+
+
+//Route::get('/find',function (){
+//    $posts = Post::all();
+//
+//    foreach ($posts as $post){
+//       return $post->title;
+//    }
+//
+//});
+//
+//
+//Route::get('/find1', function (){
+//    $post = Post::find(2);
+//    return $post->title;
+//});
+
+
+
+Route::get('/findwhere', function (){
+   $posts = Post::where('id', 2)->orderBy('id','desc')->take(1)->get();
+
+   return $posts;
+
+});
