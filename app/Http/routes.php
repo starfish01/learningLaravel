@@ -113,11 +113,41 @@ Route::get('/insert',function(){
 //
 //});
 
-Route::get('/findmore',function (){
+//Route::get('/findmore',function (){
+//
+//    $posts = Post::findOrFail(1);
+//    return $posts;
+//
+//    //$posts = Post::where('users_count', '<', 50)->firstOrFail();
+//
+//});
 
-    $posts = Post::findOrFail(1);
-    return $posts;
+//Route::get('/basicinsert', function (){
+//    $post = new Post;
+//
+//    $post->title = 'new ORM title';
+//    $post->content = 'wow eloquent is really cool, look at this';
+//
+//    $post->save();
+//
+//});
 
-    //$posts = Post::where('users_count', '<', 50)->firstOrFail();
 
+//Route::get('/basicupdate', function (){
+//    $post = Post::find(2);
+//
+//    $post->title = 'new ORM title 3';
+//    $post->content = 'wow eloquent is really cool, look at this2';
+//
+//    $post->save();
+//
+//});
+
+//Route::get('/create', function (){
+//    Post::create(['title'=>'the create method','content'=>'WOW im learning alot']);
+//});
+
+
+Route::get('/update', function (){
+    Post::where('id', 2)->where('is_admin',0)->update(['title'=>'new PHP title', 'content'=>'CHANGING with update']);
 });
