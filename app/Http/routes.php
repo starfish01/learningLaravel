@@ -147,7 +147,20 @@ Route::get('/insert',function(){
 //    Post::create(['title'=>'the create method','content'=>'WOW im learning alot']);
 //});
 
+//
+//Route::get('/update', function (){
+//    Post::where('id', 2)->where('is_admin',0)->update(['title'=>'new PHP title', 'content'=>'CHANGING with update']);
+//});
 
-Route::get('/update', function (){
-    Post::where('id', 2)->where('is_admin',0)->update(['title'=>'new PHP title', 'content'=>'CHANGING with update']);
+//Route::get('/delete', function (){
+//    $post = Post::find(2);
+//    $post->delete();
+//});
+
+Route::get('/delete2', function(){
+    Post::destroy([4,5]);
+
 });
+
+
+
