@@ -1,6 +1,7 @@
 <?php
 
 use App\Post;
+use App\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -157,10 +158,72 @@ Route::get('/insert',function(){
 //    $post->delete();
 //});
 
-Route::get('/delete2', function(){
-    Post::destroy([4,5]);
+//Route::get('/delete2', function(){
+//    Post::destroy([4,5]);
+//
+//});
+
+//Route::get('/softdelete', function(){
+//
+//    Post::find(3)->delete();
+//
+//});
+
+
+//Route::get('/readsoftdelete', function(){
+////
+////    $post = Post::withTrashed()->where('id',3)->get();
+////
+////    return $post;
+////
+////});
+
+//Route::get('/restore', function (){
+//
+//    Post::withTrashed()->where('is_admin',0)->restore();
+//
+//});
+
+//Route::get('/forcedelete', function (){
+//
+//    //Post::withTrashed()->where('is_admin',0)->forcedelete();
+//
+//    Post::withTrashed()->where('id',4)->forcedelete();
+//
+//});
+
+
+//----------------------------------------------------------Eloquent Relationships
+
+
+//One to One
+
+Route::get('/user/{id}/post', function ($id){
+
+    //return User::find($id)->post;
+
+    return User::find($id)->post->title;
 
 });
 
+
+// The inverse
+Route::get('/post/{id}/user', function ($id){
+
+    return Post::find($id)->user->name;
+
+});
+
+// One to Many
+Route::get('/posts', function (){
+
+
+    $user = User::find(1);
+
+    foreach($user->posts as $post){
+      echo  $post->title . "<br>";
+    }
+
+});
 
 
