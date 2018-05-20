@@ -2,6 +2,7 @@
 
 use App\Post;
 use App\User;
+use App\Country;
 
 /*
 |--------------------------------------------------------------------------
@@ -225,5 +226,57 @@ Route::get('/posts', function (){
     }
 
 });
+
+
+///Many to many
+///
+
+Route::get('/user/{id}/role', function ($id){
+
+
+//    $user = User::find($id)->roles()->orderBy('id','desc')->get();
+//    return $user;
+
+    $user = User::find($id);
+
+    if($user == null){
+        return 'No User Found';
+    }
+
+
+
+    foreach ($user->roles as $role) {
+
+        return $role->name;
+
+    }
+    
+});
+
+
+//Accessing the intermediate table /pivot
+
+Route::get('/user/pivot', function (){
+
+    $user = User::find(1);
+
+    foreach ($user->roles as $role){
+        echo $role->pivot;
+    }
+
+});
+
+Route::get('/user/country',function (){
+
+   $country = Country::find(1);
+
+    foreach ($country->posts as $post) {
+        
+        return $post->title;
+
+    }
+
+});
+
 
 
