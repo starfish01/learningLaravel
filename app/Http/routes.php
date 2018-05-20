@@ -1,5 +1,6 @@
 <?php
 
+use App\Photo;
 use App\Post;
 use App\User;
 use App\Country;
@@ -271,10 +272,43 @@ Route::get('/user/country',function (){
    $country = Country::find(1);
 
     foreach ($country->posts as $post) {
-        
+
         return $post->title;
 
     }
+
+});
+
+
+// polymoorphic Relations
+
+Route::get('user/photos', function (){
+    $user= User::find(1);
+
+    foreach ($user->photos as $photo){
+        return $photo->path;
+    }
+
+});
+
+Route::get('post/{id}/photos', function ($id){
+    $post= Post::find($id);
+
+    foreach ($post->photos as $photo){
+        echo $post->path . "<br>";
+    }
+
+});
+
+Route::get('photo/{id}/post', function ($id){
+
+    $photo = Photo::findOrFail($id);
+
+    return $photo->imageable;
+
+
+
+
 
 });
 
