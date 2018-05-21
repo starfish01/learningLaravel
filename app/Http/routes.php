@@ -306,11 +306,19 @@ Route::get('photo/{id}/post', function ($id){
 
     return $photo->imageable;
 
+});
+
+//Polymorphic many to many
 
 
+Route::get('post/tag',function (){
+    $post = Post::find(1);
+
+    foreach ($post->tags as $tag){
+        echo $tag->name . "<br>";
+    }
 
 
 });
-
 
 
