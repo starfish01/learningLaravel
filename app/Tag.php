@@ -8,6 +8,8 @@ class Tag extends Model
 {
     //
 
+
+
     public function posts(){
 
         return $this->morphedByMany('App\Post','taggable');

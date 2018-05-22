@@ -2,6 +2,7 @@
 
 use App\Photo;
 use App\Post;
+use App\Tag;
 use App\User;
 use App\Country;
 
@@ -318,7 +319,16 @@ Route::get('post/tag',function (){
         echo $tag->name . "<br>";
     }
 
-
 });
 
+Route::get('/tag/post/', function (){
+
+    $tag = Tag::find(2);
+
+    foreach ($tag->posts as $post){
+        echo $post->title;
+    }
+
+
+});
 
