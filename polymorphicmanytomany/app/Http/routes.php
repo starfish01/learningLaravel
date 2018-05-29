@@ -48,7 +48,28 @@ Route::get('/read', function (){
 
     }
 
-
 });
 
+Route::get('/update', function (){
+
+//    $post = Post::findOrFail(3);
+//
+//
+//    foreach ($post->tags as $tag){
+//
+//       return $tag->whereName('php')->update(['name'=>'phpnew']);
+//
+//    }
+
+    $post = Post::findOrFail(3);
+
+    $tag = Tag::find(1);
+
+   // $post->tags()->save($tag);
+
+   // $post->tags()->attach($tag);
+
+    // $post->tags()->sync([1]);
+
+});
 
