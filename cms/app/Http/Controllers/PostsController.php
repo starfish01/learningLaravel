@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -13,13 +14,16 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
-        //
+        //this works
+       //$posts = Post::findOrFail(1);
 
+        $posts = Post::all();
+        
+        return view('posts.index', compact('posts'));
 
-
-        return "The information being passed is $id";
+        //return "The information being passed is";
 
     }
 
@@ -32,7 +36,7 @@ class PostsController extends Controller
     {
         //
 
-        return "i am the creater";
+        return view('posts.create');
     }
 
     /**
@@ -44,6 +48,30 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         //
+
+        //return $request->all();
+
+        //return $request->get('title');
+
+        //return $request->title;
+
+        Post::create($request->all());
+
+        return redirect('/posts');
+
+//        $input = $request->all();
+//
+//        $input['title'] = $request->title;
+//
+//        Post::create($request->all());
+
+//        $post = new Post;
+//
+//        $post->title = $request->title;
+//
+//        $post->save();
+
+
     }
 
     /**

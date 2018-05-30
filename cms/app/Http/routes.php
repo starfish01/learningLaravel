@@ -56,11 +56,11 @@ use App\Country;
 
 //-----------------------------------------------------------Application Routes
 
-Route::get('/insert',function(){
-
-    DB::insert('insert into posts(title, content) values(?,?)', ['PHP With Laravel','PHP Laravel is the best thing thats happened to PHP']);
-
-});
+//Route::get('/insert',function(){
+//
+//    DB::insert('insert into posts(title, content) values(?,?)', ['PHP With Laravel','PHP Laravel is the best thing thats happened to PHP']);
+//
+//});
 
 //Route::get('/read',function(){
 //
@@ -200,135 +200,156 @@ Route::get('/insert',function(){
 
 
 //One to One
+//
+//Route::get('/user/{id}/post', function ($id){
+//
+//    //return User::find($id)->post;
+//
+//    return User::find($id)->post->title;
+//
+//});
+//
+//
+//// The inverse
+//Route::get('/post/{id}/user', function ($id){
+//
+//    return Post::find($id)->user->name;
+//
+//});
+//
+//// One to Many
+//Route::get('/posts', function (){
+//
+//
+//    $user = User::find(1);
+//
+//    foreach($user->posts as $post){
+//      echo  $post->title . "<br>";
+//    }
+//
+//});
+//
+//
+/////Many to many
+/////
+//
+//Route::get('/user/{id}/role', function ($id){
+//
+//
+////    $user = User::find($id)->roles()->orderBy('id','desc')->get();
+////    return $user;
+//
+//    $user = User::find($id);
+//
+//    if($user == null){
+//        return 'No User Found';
+//    }
+//
+//
+//
+//    foreach ($user->roles as $role) {
+//
+//        return $role->name;
+//
+//    }
+//
+//});
+//
+//
+////Accessing the intermediate table /pivot
+//
+//Route::get('/user/pivot', function (){
+//
+//    $user = User::find(1);
+//
+//    foreach ($user->roles as $role){
+//        echo $role->pivot;
+//    }
+//
+//});
+//
+//Route::get('/user/country',function (){
+//
+//   $country = Country::find(1);
+//
+//    foreach ($country->posts as $post) {
+//
+//        return $post->title;
+//
+//    }
+//
+//});
+//
+//
+//// polymoorphic Relations
+//
+//Route::get('user/photos', function (){
+//    $user= User::find(1);
+//
+//    foreach ($user->photos as $photo){
+//        return $photo->path;
+//    }
+//
+//});
+//
+//Route::get('post/{id}/photos', function ($id){
+//    $post= Post::find($id);
+//
+//    foreach ($post->photos as $photo){
+//        echo $post->path . "<br>";
+//    }
+//
+//});
+//
+//Route::get('photo/{id}/post', function ($id){
+//
+//    $photo = Photo::findOrFail($id);
+//
+//    return $photo->imageable;
+//
+//});
+//
+////Polymorphic many to many
+//
+//
+//Route::get('post/tag',function (){
+//    $post = Post::find(1);
+//
+//    foreach ($post->tags as $tag){
+//        echo $tag->name . "<br>";
+//    }
+//
+//});
+//
+//Route::get('/tag/post/', function (){
+//
+//    $tag = Tag::find(2);
+//
+//    foreach ($tag->posts as $post){
+//        echo $post->title;
+//    }
+//
+//
+//});
 
-Route::get('/user/{id}/post', function ($id){
 
-    //return User::find($id)->post;
-
-    return User::find($id)->post->title;
-
-});
-
-
-// The inverse
-Route::get('/post/{id}/user', function ($id){
-
-    return Post::find($id)->user->name;
-
-});
-
-// One to Many
-Route::get('/posts', function (){
-
-
-    $user = User::find(1);
-
-    foreach($user->posts as $post){
-      echo  $post->title . "<br>";
-    }
-
-});
-
-
-///Many to many
+///------------------------------------------------------------------------
+/// Crud application
+/// -----------------------------------------------------------------------
 ///
 
-Route::get('/user/{id}/role', function ($id){
 
-
-//    $user = User::find($id)->roles()->orderBy('id','desc')->get();
-//    return $user;
-
-    $user = User::find($id);
-
-    if($user == null){
-        return 'No User Found';
-    }
+Route::resource('/posts', 'PostsController');
 
 
 
-    foreach ($user->roles as $role) {
-
-        return $role->name;
-
-    }
-    
-});
 
 
-//Accessing the intermediate table /pivot
-
-Route::get('/user/pivot', function (){
-
-    $user = User::find(1);
-
-    foreach ($user->roles as $role){
-        echo $role->pivot;
-    }
-
-});
-
-Route::get('/user/country',function (){
-
-   $country = Country::find(1);
-
-    foreach ($country->posts as $post) {
-
-        return $post->title;
-
-    }
-
-});
 
 
-// polymoorphic Relations
-
-Route::get('user/photos', function (){
-    $user= User::find(1);
-
-    foreach ($user->photos as $photo){
-        return $photo->path;
-    }
-
-});
-
-Route::get('post/{id}/photos', function ($id){
-    $post= Post::find($id);
-
-    foreach ($post->photos as $photo){
-        echo $post->path . "<br>";
-    }
-
-});
-
-Route::get('photo/{id}/post', function ($id){
-
-    $photo = Photo::findOrFail($id);
-
-    return $photo->imageable;
-
-});
-
-//Polymorphic many to many
 
 
-Route::get('post/tag',function (){
-    $post = Post::find(1);
-
-    foreach ($post->tags as $tag){
-        echo $tag->name . "<br>";
-    }
-
-});
-
-Route::get('/tag/post/', function (){
-
-    $tag = Tag::find(2);
-
-    foreach ($tag->posts as $post){
-        echo $post->title;
-    }
 
 
-});
+
 

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Post extends Model
 {
-    use SoftDeletes;
+
     //
     //this class assumes the table in the db is 'posts' it automatically puts it lowercase and adds an s
     //if this is not the case you can force it with
