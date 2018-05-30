@@ -2,6 +2,8 @@
 
 @section('content')
 
+    <h1>Create</h1>
+
     <form method="post" action="/posts">
 
         <input type="text" name="title" placeholder="Enter Title">

@@ -20,7 +20,7 @@ class PostsController extends Controller
        //$posts = Post::findOrFail(1);
 
         $posts = Post::all();
-        
+
         return view('posts.index', compact('posts'));
 
         //return "The information being passed is";
@@ -84,7 +84,10 @@ class PostsController extends Controller
     {
         //
 
-        return "this is the show message";
+
+        $post = Post::findOrFail($id);
+        return view('posts.show', compact('post'));
+
     }
 
     /**
@@ -96,6 +99,12 @@ class PostsController extends Controller
     public function edit($id)
     {
         //
+
+        $post = Post::findOrFail($id);
+
+        return view('posts.edit', compact('post'));
+
+
     }
 
     /**
