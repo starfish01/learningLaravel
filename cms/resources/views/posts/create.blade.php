@@ -4,7 +4,11 @@
 
     <h1>Create</h1>
 
-    <form method="post" action="/posts">
+    {{--<form method="post" action="/posts">--}}
+
+    {!! Form::open() !!}
+
+
 
         <input type="text" name="title" placeholder="Enter Title">
 

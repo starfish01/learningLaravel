@@ -13,6 +13,8 @@
 
     </ul>
 
+    <a href="{{route('posts.create')}}" class="btn btn-primary">Create</a>
+
 
 
 @stop

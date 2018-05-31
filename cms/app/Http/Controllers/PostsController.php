@@ -117,6 +117,14 @@ class PostsController extends Controller
     public function update(Request $request, $id)
     {
         //
+
+
+        $post = Post::findOrFail($id);
+
+        $post->update($request->all());
+
+
+        return redirect('/posts');
     }
 
     /**
@@ -128,6 +136,13 @@ class PostsController extends Controller
     public function destroy($id)
     {
         //
+
+       Post::whereId($id)->delete();
+
+
+
+
+        return redirect('/posts');
     }
 
     public function contact(){

@@ -6,8 +6,9 @@
 
     <p>{{$post->content}}</p>
 
-  <a href="{{route('posts.index')}}" class="btn btn-primary" >Click to go back</a>
+    <a href="{{route('posts.index')}}" class="btn btn-primary" >Click to go back</a>
 
+  <a href="{{route('posts.edit', $post->id)}}" class="btn-primary btn">Edit</a>
 
 
 @stop
