@@ -52,4 +52,16 @@ class User extends Authenticatable
         return $this->morphMany('App\Photo','imageable');
     }
 
+
+    public function getNameAttribute($value){
+        //gets the data
+        return ucfirst($value);
+    }
+
+    public function setNameAttribute($value){
+        //sets the date
+        $this->attributes['name'] = ucfirst($value);
+    }
+
+
 }

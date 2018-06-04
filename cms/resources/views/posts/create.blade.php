@@ -15,16 +15,18 @@
         </div>
     @endif
 
-    {!! Form::open(['method'=>'POST','action'=>'PostsController@store']) !!}
-
-        <div class="form-group">
-            {!! Form::label('title', 'Post Name') !!}
-            {!! Form::text('title', null, ['class'=>'form-control']) !!}
-
-        </div>
-
-        {!! Form::submit('Submit', ['class'=>'btn btn-primary']) !!}
-    {!!  Form::close() !!}
+  {!! Form::open(['method'=>'POST','action'=>'PostsController@store']) !!}
+      <div class="form-group">
+          {!! Form::label('title', 'Post Name') !!}
+          {!! Form::text('title', null, ['class'=>'form-control']) !!}
+      </div>
+      <div class="form-group">
+          {!! Form::submit('Submit', ['class'=>'btn btn-primary']) !!}
+      </div>
+      <div class="form-group">
+          {!! Form::submit('Submit', ['class'=>'btn btn-primary']) !!}
+      </div>
+  {!!  Form::close() !!}
 
     {{--<form method="post" action="/posts">--}}
         {{--<input type="text" name="title" placeholder="Enter Title">--}}

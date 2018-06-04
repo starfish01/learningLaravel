@@ -5,6 +5,7 @@ use App\Post;
 use App\Tag;
 use App\User;
 use App\Country;
+use Carbon\Carbon;
 
 /*
 |--------------------------------------------------------------------------
@@ -341,7 +342,36 @@ use App\Country;
 
 Route::group(['middlewareGroups' => 'web'], function () {
     Route::resource('/posts', 'PostsController');
+
+    Route::get('/dates', function (){
+        $date = new DateTime('+1 week');
+        echo $date->format('d-m-y');
+
+        echo '<br>';
+
+        echo Carbon::now()->addDays(4)->diffForHumans();
+
+        echo '<br>';
+
+        echo Carbon::now()->subMonths(4)->diffForHumans();
+
+    });
+
+
+    Route::get('/getname', function (){
+        $user = User::findOrFail(1);
+        echo $user->name;
+    });
+
+    Route::get('/setname', function (){
+        $user = User::findOrFail(1);
+        $user->name = 'beck';
+        $user->save();
+    });
+
 });
+
+
 
 
 
