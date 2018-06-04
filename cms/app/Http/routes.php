@@ -339,7 +339,9 @@ use App\Country;
 ///
 
 
-Route::resource('/posts', 'PostsController');
+Route::group(['middlewareGroups' => 'web'], function () {
+    Route::resource('/posts', 'PostsController');
+});
 
 
 

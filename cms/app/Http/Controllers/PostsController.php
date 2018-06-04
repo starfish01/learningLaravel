@@ -47,29 +47,16 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
 
-        //return $request->all();
+        $this->validate($request, [
+            'title'=>'required|max:10|min:2'
+        ]);
 
-        //return $request->get('title');
-
-        //return $request->title;
 
         Post::create($request->all());
 
         return redirect('/posts');
 
-//        $input = $request->all();
-//
-//        $input['title'] = $request->title;
-//
-//        Post::create($request->all());
-
-//        $post = new Post;
-//
-//        $post->title = $request->title;
-//
-//        $post->save();
 
 
     }

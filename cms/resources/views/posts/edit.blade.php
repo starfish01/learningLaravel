@@ -4,33 +4,67 @@
 
     <h1>Edit {{$post->title}}</h1>
 
-    <form method="post" action="/posts/{{$post->id}}">
-
-        <input type="hidden" name="_method" value="PUT">
-
-        {{csrf_field()}}
-
-        <input type="text" name="title" value="{{$post->title}}">
-
-
-        <input type="submit" name="submit" value="Update">
-
-    </form>
+    {!! Form::model($post, ['method'=>'PATCH','action'=>['PostsController@update', $post->id]]) !!}
+        <div class="form-group">
+            {!! Form::label('title', 'Post Name') !!}
+            {!! Form::text('title', null, ['class'=>'form-control']) !!}
+        </div>
+        {!! Form::submit('Update', ['class'=>'btn btn-primary']) !!}
+    {!!  Form::close() !!}
 
     <br>
-    <a href="{{route('posts.index')}}" class="btn btn-primary">Return to Index</a>
-    {{--<a href="{{route('posts.destroy')}}" class="btn btn-danger">Delete</a>--}}
+
+    {!! Form::model($post, ['method'=>'DELETE', 'action'=>['PostsController@destroy', $post->id]]) !!}
+        {!! Form::submit('Delete', ['class'=>'btn btn-danger']) !!}
+    {!! Form::close() !!}
 
 
-    <form method="post" action="/posts/{{$post->id}}">
+    {{--<form method="post" action="/posts/{{$post->id}}">--}}
 
-        <input type="hidden" name="_method" value="DELETE">
+        {{--<input type="hidden" name="_method" value="DELETE">--}}
 
-        {{csrf_field()}}
+        {{--{{csrf_field()}}--}}
 
-        <input type="submit" value="Delete" class="btn-danger btn">
+        {{--<input type="submit" value="Delete" class="btn-danger btn">--}}
 
-    </form>
+    {{--</form>--}}
+
+    {{--{!! Form::open(['method'=>'DELETE', 'action'=>'PostsController@destroy']) !!}--}}
+
+        {{--{!! Form::submit('Delete', ['class'=>'btn btn-primary']) !!}--}}
+
+    {{--{!! Form::close() !!}--}}
+
+
+
+    {{--{!! Form::open(['method'=>'POST','action'=>'PostsController@store']) !!}--}}
+
+    {{--<div class="form-group">--}}
+        {{--{!! Form::label('title', 'Post Name') !!}--}}
+        {{--{!! Form::text('title', null, ['class'=>'form-control']) !!}--}}
+
+    {{--</div>--}}
+
+    {{--{!! Form::submit('Submit', ['class'=>'btn btn-primary']) !!}--}}
+
+    {{--<input type="text" name="title" placeholder="Enter Title">--}}
+
+    {{--<input type="submit" name="submit">--}}
+
+    {{--{!!  Form::close() !!}--}}
+
+    {{--<form method="post" action="/posts/{{$post->id}}">--}}
+
+    {{--<input type="hidden" name="_method" value="PUT">--}}
+
+    {{--{{csrf_field()}}--}}
+
+    {{--<input type="text" name="title" value="{{$post->title}}">--}}
+
+
+    {{--<input type="submit" name="submit" value="Update">--}}
+
+    {{--</form>--}}
 
 
 @stop
