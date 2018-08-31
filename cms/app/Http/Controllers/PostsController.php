@@ -18,9 +18,17 @@ class PostsController extends Controller
     public function index()
     {
         //this works
-       //$posts = Post::findOrFail(1);
+        //$posts = Post::findOrFail(1);
 
-        $posts = Post::all();
+        //$posts = Post::all();
+
+        //$posts = Post::latest()->get();
+
+        //longer way of doing abover
+        $posts = Post::orderBy('id','desc')->get();
+
+        //wont call query scope ? its been literally months so im not sure if its an issue on my end with a mistake a did setting it up
+        //$posts = Post::latest()->get();
 
         return view('posts.index', compact('posts'));
 
@@ -43,7 +51,7 @@ class PostsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(CreatePostRequest $request)
@@ -59,13 +67,12 @@ class PostsController extends Controller
         return redirect('/posts');
 
 
-
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -81,7 +88,7 @@ class PostsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -98,8 +105,8 @@ class PostsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -118,24 +125,23 @@ class PostsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         //
 
-       Post::whereId($id)->delete();
-
-
+        Post::whereId($id)->delete();
 
 
         return redirect('/posts');
     }
 
-    public function contact(){
+    public function contact()
+    {
 
-        $people = ['bob','james','barry'];
+        $people = ['bob', 'james', 'barry'];
 
 
         return view('contact', compact('people'));
@@ -143,7 +149,8 @@ class PostsController extends Controller
     }
 
 
-    public function show_post($id, $name){
+    public function show_post($id, $name)
+    {
         //return view('post')->with('id',$id);
 
         return view('post', compact('id', 'name'));

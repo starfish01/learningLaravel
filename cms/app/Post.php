@@ -27,9 +27,10 @@ class Post extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function photos(){
-        return $this->morphMany('App\Photo','imageable');
-    }
+    //this looks wrong??
+//    public function photos(){
+//        return $this->morphMany('App\Photo','imageable');
+//    }
 
     public function tags(){
 
@@ -37,5 +38,17 @@ class Post extends Model
 
     }
 
+    public function getPathAttribute($value){
+        return $this->directory . $value;
+    }
+
+    public static function scopeLatest($query){
+
+        return $query->orderBy('id','desc')->get();
+
+    }
+
 
 }
+
+
