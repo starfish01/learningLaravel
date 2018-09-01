@@ -62,9 +62,20 @@ class PostsController extends Controller
 //        ]);
 
 
-        Post::create($request->all());
+        
 
-        return redirect('/posts');
+
+
+        //grabs files
+//        $file = $request->file('file');
+//
+//        echo "<br>";
+//
+//        echo $file->getClientOriginalName();
+
+      // Post::create($request->all());
+//
+      //return redirect('/posts');
 
 
     }

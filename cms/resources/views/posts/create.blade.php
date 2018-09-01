@@ -15,17 +15,24 @@
         </div>
     @endif
 
-  {!! Form::open(['method'=>'POST','action'=>'PostsController@store']) !!}
+  {!! Form::open(['method'=>'POST','action'=>'PostsController@store', 'files' => true]) !!}
+
+
       <div class="form-group">
           {!! Form::label('title', 'Post Name') !!}
           {!! Form::text('title', null, ['class'=>'form-control']) !!}
       </div>
+
+    <div class="form-group">
+        {!! Form::file('file',['class'=>'form-control']) !!}
+    </div>
+
       <div class="form-group">
           {!! Form::submit('Submit', ['class'=>'btn btn-primary']) !!}
       </div>
-      <div class="form-group">
-          {!! Form::submit('Submit', ['class'=>'btn btn-primary']) !!}
-      </div>
+      {{--<div class="form-group">--}}
+          {{--{!! Form::submit('Submit', ['class'=>'btn btn-primary']) !!}--}}
+      {{--</div>--}}
   {!!  Form::close() !!}
 
     {{--<form method="post" action="/posts">--}}
