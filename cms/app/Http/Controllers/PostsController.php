@@ -61,8 +61,19 @@ class PostsController extends Controller
 //            'title'=>'required|max:10|min:2'
 //        ]);
 
+        $input = $request->all();
 
-        
+        if($file = $request->file('file')){
+            $name = $file->getClientOriginalName();
+            $file->move('images', $name);
+            $input['path']= $name;
+        }
+
+        Post::create($input);
+
+
+
+
 
 
 
