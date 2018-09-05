@@ -41,5 +41,13 @@ Route::get('/logout1', function (){
     Auth::logout();
     return view('auth/login');
 
+});
+
+Route::get('/querylogin', function (){
+
+    if($user = Auth::user()){
+        return "true";
+    }else
+        return "false";
 
 });

@@ -8,14 +8,10 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    You are logged in! {{$user->name}} {{$user->email}} {{$user->id}}
+                    You are logged in!
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
-
-
 @endsection
