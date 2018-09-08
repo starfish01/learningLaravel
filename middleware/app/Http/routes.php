@@ -12,15 +12,7 @@
 */
 
 Route::get('/', function () {
-    //return view('welcome');
-
-
-    $user = Auth::user();
-
-    if($user->isAdmin()){
-        return 'this user is an admin';
-    }
-
+    return view('welcome');
 });
 
 Route::auth();
@@ -33,3 +25,5 @@ Route::get('/admin/user/roles', ['middleware'=>['auth','role'],  function (){
     return "Middleware Role";
 
 }]);
+
+Route::get('/admin', 'AdminController@index');
