@@ -37,17 +37,28 @@
                 </div>
             </div>
             <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            {!! Form::label('password', 'Password:') !!}
+                            {!! Form::password('password', ['class'=>'form-control']) !!}
+                        </div>
+                    </div>
+                </div>
 
                 <div class="col-sm-6">
                     <div class="form-group">
                         {!! Form::submit('Create User', ['class'=>'btn btn-primary'])!!}
                     </div>
                 </div>
-                <div class="col-sm-6">
-                </div>
-            </div>
+
+
         {!! Form::close()!!}
 
     </div>
+
+    @include('includes.form-error')
+
+
+
 
 @stop
