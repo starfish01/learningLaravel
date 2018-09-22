@@ -6,7 +6,20 @@
 
     <div class="container">
 
-        {!! Form::open(['method'=>'POST', 'action'=>'AdminUsersController@store']) !!}
+        @include('includes.form-error')
+
+        {!! Form::open(['method'=>'POST', 'action'=>'AdminUsersController@store','files'=>true]) !!}
+
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    {!! Form::label('file', 'Photo:') !!}
+                    {!! Form::file('file', null,['class'=>'form-control']) !!}
+                </div>
+            </div>
+        </div>
+
 
             <div class="row">
                 <div class="col-sm-6">
@@ -55,10 +68,5 @@
         {!! Form::close()!!}
 
     </div>
-
-    @include('includes.form-error')
-
-
-
 
 @stop

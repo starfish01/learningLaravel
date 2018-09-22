@@ -27,7 +27,7 @@
                     <td>{{$user->id}}</td>
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
-                    <td>{{$user->role->name}}</td>
+                    <td>{{$user->role['name']}}</td>
                     <td>{{$user->is_active == 1 ? 'Active' : 'Inactive'}}</td>
                     <td>{{$user->updated_at->diffForHumans()}}</td>
                     <td>{{$user->created_at->diffForHumans()}}</td>
@@ -41,7 +41,6 @@
 
         </tbody>
       </table>
-    </div>
 
 
 
