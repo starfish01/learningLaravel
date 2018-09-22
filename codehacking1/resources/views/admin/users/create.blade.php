@@ -14,8 +14,8 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="form-group">
-                    {!! Form::label('file', 'Photo:') !!}
-                    {!! Form::file('file', null,['class'=>'form-control']) !!}
+                    {!! Form::label('photo_id', 'Photo:') !!}
+                    {!! Form::file('photo_id', null,['class'=>'form-control']) !!}
                 </div>
             </div>
         </div>
@@ -45,7 +45,7 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         {!! Form::label('status', 'Is the user Active?:') !!}
-                        {!! Form::select('status',array(1=>'Active', 0=>'Inactive'), 0,['class'=>'form-control']) !!}
+                        {!! Form::select('status',array(1=>'Active', 0=>'Inactive'), null,['class'=>'form-control']) !!}
                     </div>
                 </div>
             </div>
