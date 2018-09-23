@@ -8,6 +8,7 @@ use App\Photo;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class AdminPostsController extends Controller
 {
@@ -51,8 +52,9 @@ class AdminPostsController extends Controller
             $input['photo_id'] = $photo->id;
         }
 
-        return $input;
+        Post::create($input);
 
+        return redirect('admin/posts/');
     }
 
     /**
