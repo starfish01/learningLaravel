@@ -2,6 +2,10 @@
 
 @section('content')
 
+    @if(Session::has('deleted_user'))
+        <p>{{session('deleted_user')}}</p>
+    @endif
+
     <h1>Users</h1>
 
     <table class="table">
@@ -34,7 +38,6 @@
                     <td>{{$user->updated_at->diffForHumans()}}</td>
                     <td>{{$user->created_at->diffForHumans()}}</td>
                     <td><a href="{{route('users.edit',$user->id)}}" class="btn btn-primary">Edit</a> </td>
-                    <td><a href="" class="btn btn-danger">Delete</a> </td>
                 </tr>
 
             @endforeach
