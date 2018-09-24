@@ -90,6 +90,27 @@ class AdminPostsController extends Controller
     public function update(PostCreateRequest $request, $id)
     {
         //CONTINUE HERE
+        $input = $request->all();
+
+        $post = Post::findOrFail($id);
+
+        $input['user_id'] =  Auth::id();
+
+        if($image = $request->file('photo_id')){
+
+            if($post->photo){
+                unlink(public_path() . $post->photo->file);
+            }
+
+            $name = implode(unpack("H*", time() . Auth::id())).$image->getClientOriginalName();
+            $image->move('images',$name);
+            $photo = Photo::create(['path'=>$name]);
+            $input['photo_id'] = $photo->id;
+        }
+
+        $post->update($input);
+
+        return redirect('admin/posts/');
 
     }
 
