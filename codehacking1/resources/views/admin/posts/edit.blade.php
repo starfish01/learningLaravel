@@ -39,7 +39,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     {!! Form::label('category_id', 'Please select a category:') !!}
-                    {!! Form::select('category_id',array(1=>'category1', 0=>'category2'),0,['class'=>'form-control']) !!}
+                    {!! Form::select('category_id',[''=>'Choose An Option'] + $categories ,null,['class'=>'form-control']) !!}
                 </div>
             </div>
         </div>
@@ -50,6 +50,15 @@
         </div>
         <div class="form-group">
             {!! Form::submit('Save Post', ['class'=>'btn btn-primary'])!!}
+        </div>
+
+        {!! Form::close()!!}
+
+
+        {!! Form::open(['method'=>'DELETE', 'action'=>['AdminPostsController@destroy', $post->id]])!!}
+
+        <div class="form-group">
+            {!! Form::submit('Delete Post', ['class'=>'btn btn-danger'])!!}
         </div>
 
         {!! Form::close()!!}

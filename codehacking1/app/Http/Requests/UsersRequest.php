@@ -27,6 +27,7 @@ class UsersRequest extends FormRequest
             'name'=>'required',
             'email'=>'required',
             'role_id'=>'required',
+            'photo_id' => 'max:1000',
             'status'=>'required',
             'password'=>'required'
         ];

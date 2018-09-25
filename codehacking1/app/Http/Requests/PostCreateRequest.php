@@ -27,6 +27,7 @@ class PostCreateRequest extends FormRequest
             //title body category_id
             'title'=>'required',
             'body'=>'required',
+            'photo_id' => 'max:1000',
             'category'=>'category_id'
         ];
     }
