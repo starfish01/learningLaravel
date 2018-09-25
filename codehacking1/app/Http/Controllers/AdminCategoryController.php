@@ -60,6 +60,9 @@ class AdminCategoryController extends Controller
     public function edit($id)
     {
         //
+        $category = Category::findOrFail($id);
+        return view('admin.categories.edit', compact('category'));
+
     }
 
     /**

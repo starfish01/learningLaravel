@@ -28,7 +28,7 @@
                     <td>{{$post->id}}</td>
                     <td>{{$post->title}}</td>
                     <td><img src="{{ $post->photo ? $post->photo->file : 'http://placehold.it/50x50'}}" height="50px" alt=""></td>
-                    <td>{{$post->category['name']}}</td>
+                    <td>{{ $post->category ? $post->category['name'] : 'Uncategorised' }}</td>
                     <td>{{ $post->user['name'] }}</td>
                     <td></td>
                     <td>{{$post->updated_at->diffForHumans()}}</td>

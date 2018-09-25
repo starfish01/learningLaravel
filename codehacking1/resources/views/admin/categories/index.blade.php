@@ -2,40 +2,30 @@
 
 @section('content')
 
-    <h1>Posts</h1>
+    <h1>Categories</h1>
 
     <table class="table">
         <thead>
         <tr>
             <th>ID</th>
-            <th>Title</th>
-            <th>Photo</th>
-            <th>Category</th>
-            <th>Created By</th>
-            <th>Visable</th>
-            <th>Updated</th>
-            <th>Created</th>
-
+            <th>Name</th>
         </tr>
         </thead>
         <tbody>
 
-        {{--@if($posts)--}}
+        @if($categories)
 
-            {{--@foreach($posts as $post)--}}
+            @foreach($categories as $category)
 
-                {{--<tr>--}}
-                    {{--<td>{{  }}</td>--}}
-                    {{--<td>{{  }}</td>--}}
-                    {{----}}
-                    {{--<td>{{$post->updated_at->diffForHumans()}}</td>--}}
-                    {{--<td>{{$post->created_at->diffForHumans()}}</td>--}}
-                    {{--<td><a href="{{route('posts.edit',$post->id)}}" class="btn btn-primary">Edit</a> </td>--}}
-                {{--</tr>--}}
+                <tr>
+                    <td>{{ $category->id }}</td>
+                    <td>{{ $category->name }}</td>
+                    <td><a href="{{route('categories.edit',$category->id)}}" class="btn btn-primary">Edit</a></td>
+                </tr>
 
-            {{--@endforeach--}}
+            @endforeach
 
-        {{--@endif--}}
+        @endif
 
         </tbody>
     </table>
