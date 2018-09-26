@@ -26,6 +26,8 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    @yield('styles')
+
 
 
 
@@ -159,9 +161,7 @@
                                 <a href="{{route('categories.index')}}">All Categories</a>
                             </li>
 
-                            <li>
-                                <a href="/categories/create">Create Category</a>
-                            </li>
+
 
                         </ul>
                         <!-- /.nav-second-level -->

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
-use App\Http\Requests\CategoryRequest;
+use App\Photo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class AdminCategoryController extends Controller
+class AdminPhotoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class AdminCategoryController extends Controller
     public function index()
     {
         //
-        $categories = Category::all();
-        return view('admin.categories.index', compact('categories'));
+        $photos = Photo::all();
+        return view('admin.media.index',compact('photos'));
     }
 
     /**
@@ -28,6 +28,7 @@ class AdminCategoryController extends Controller
     public function create()
     {
         //
+        return view('admin.media.create');
     }
 
     /**
@@ -36,11 +37,20 @@ class AdminCategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryRequest $request)
+    public function store(Request $request)
     {
-        //
-        Category::create($request->all());
-        return redirect('admin/categories');
+
+        $file = $request->file('file');
+
+        $name = implode(unpack("H*", time() . Auth::id())).$file->getClientOriginalName();
+
+        $file->move('images',$name);
+
+        Photo::create(['path'=>$name]);
+
+        //return redirect('admin.media.index');
+//        $input['photo_id'] = $photo->id;
+
     }
 
     /**
@@ -63,8 +73,6 @@ class AdminCategoryController extends Controller
     public function edit($id)
     {
         //
-        $category = Category::findOrFail($id);
-        return view('admin.categories.edit', compact('category'));
     }
 
     /**
@@ -74,16 +82,9 @@ class AdminCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoryRequest $request, $id)
+    public function update(Request $request, $id)
     {
         //
-
-        $input = $request->all();
-        $category = Category::findOrFail($id);
-        $category->update($input);
-        return redirect('admin/categories/');
-
-
     }
 
     /**
@@ -95,8 +96,13 @@ class AdminCategoryController extends Controller
     public function destroy($id)
     {
         //
-        $category = Category::findOrFail($id);
-        $category->delete();
-        return redirect('admin/categories');
+        $photo = Photo::findOrFail($id);
+
+        unlink(public_path() . $photo->file);
+
+        $photo->delete();
+
+        return redirect('admin/media/');
+
     }
 }
