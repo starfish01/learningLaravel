@@ -7156,7 +7156,7 @@ window.axios.defaults.headers.common = {
     }
 
     /**
-     * Extracts wrapper details from the `source` body comment.
+     * Extracts wrapper details from the `source` body comments.
      *
      * @private
      * @param {string} source The source to inspect.
@@ -7279,7 +7279,7 @@ window.axios.defaults.headers.common = {
     }
 
     /**
-     * Inserts wrapper `details` in a comment at the top of the `source` body.
+     * Inserts wrapper `details` in a comments at the top of the `source` body.
      *
      * @private
      * @param {string} source The source to modify.
@@ -7698,7 +7698,7 @@ window.axios.defaults.headers.common = {
 
     /**
      * Sets the `toString` method of `wrapper` to mimic the source of `reference`
-     * with wrapper details in a comment at the top of the source body.
+     * with wrapper details in a comments at the top of the source body.
      *
      * @private
      * @param {Function} wrapper The function to modify.
@@ -19768,7 +19768,7 @@ getText = Sizzle.getText = function( elem ) {
 	if ( !nodeType ) {
 		// If no nodeType, this is expected to be an array
 		while ( (node = elem[i++]) ) {
-			// Do not traverse comment nodes
+			// Do not traverse comments nodes
 			ret += getText( node );
 		}
 	} else if ( nodeType === 1 || nodeType === 9 || nodeType === 11 ) {
@@ -19785,7 +19785,7 @@ getText = Sizzle.getText = function( elem ) {
 	} else if ( nodeType === 3 || nodeType === 4 ) {
 		return elem.nodeValue;
 	}
-	// Do not include comment or processing instruction nodes
+	// Do not include comments or processing instruction nodes
 
 	return ret;
 };
@@ -20209,7 +20209,7 @@ Expr = Sizzle.selectors = {
 		"empty": function( elem ) {
 			// http://www.w3.org/TR/selectors/#empty-pseudo
 			// :empty is negated by element (1) or content nodes (text: 3; cdata: 4; entity ref: 5),
-			//   but not by others (comment: 8; processing instruction: 7; etc.)
+			//   but not by others (comments: 8; processing instruction: 7; etc.)
 			// nodeType < 6 works because attributes (2) do not appear as children
 			for ( elem = elem.firstChild; elem; elem = elem.nextSibling ) {
 				if ( elem.nodeType < 6 ) {
@@ -23136,7 +23136,7 @@ jQuery.event = {
 			special, handlers, type, namespaces, origType,
 			elemData = dataPriv.get( elem );
 
-		// Don't attach events to noData or text/comment nodes (but allow plain objects)
+		// Don't attach events to noData or text/comments nodes (but allow plain objects)
 		if ( !elemData ) {
 			return;
 		}
@@ -24621,7 +24621,7 @@ jQuery.extend( {
 	// Get and set the style property on a DOM Node
 	style: function( elem, name, value, extra ) {
 
-		// Don't set styles on text and comment nodes
+		// Don't set styles on text and comments nodes
 		if ( !elem || elem.nodeType === 3 || elem.nodeType === 8 || !elem.style ) {
 			return;
 		}
@@ -25712,7 +25712,7 @@ jQuery.extend( {
 		var ret, hooks,
 			nType = elem.nodeType;
 
-		// Don't get/set attributes on text, comment and attribute nodes
+		// Don't get/set attributes on text, comments and attribute nodes
 		if ( nType === 3 || nType === 8 || nType === 2 ) {
 			return;
 		}
@@ -25844,7 +25844,7 @@ jQuery.extend( {
 		var ret, hooks,
 			nType = elem.nodeType;
 
-		// Don't get/set properties on text, comment and attribute nodes
+		// Don't get/set properties on text, comments and attribute nodes
 		if ( nType === 3 || nType === 8 || nType === 2 ) {
 			return;
 		}
@@ -26348,7 +26348,7 @@ jQuery.extend( jQuery.event, {
 
 		cur = lastElement = tmp = elem = elem || document;
 
-		// Don't do events on text and comment nodes
+		// Don't do events on text and comments nodes
 		if ( elem.nodeType === 3 || elem.nodeType === 8 ) {
 			return;
 		}
@@ -26736,7 +26736,7 @@ var
 	 */
 	transports = {},
 
-	// Avoid comment-prolog char sequence (#10098); must appease lint and evade compression
+	// Avoid comments-prolog char sequence (#10098); must appease lint and evade compression
 	allTypes = "*/".concat( "*" ),
 
 	// Anchor tag for parsing the document origin
@@ -28533,7 +28533,7 @@ jQuery.noConflict = function( deep ) {
 };
 
 // Expose jQuery and $ identifiers, even in AMD
-// (#7102#comment:10, https://github.com/jquery/jquery/pull/557)
+// (#7102#comments:10, https://github.com/jquery/jquery/pull/557)
 // and CommonJS for browser emulators (#13566)
 if ( !noGlobal ) {
 	window.jQuery = window.$ = jQuery;
@@ -35155,7 +35155,7 @@ function createComponent (
     Ctor = resolveAsyncComponent(asyncFactory, baseCtor, context);
     if (Ctor === undefined) {
       // return a placeholder node for async component, which is rendered
-      // as a comment node but preserves all the raw information for the node.
+      // as a comments node but preserves all the raw information for the node.
       // the information will be used for async server-rendering and hydration.
       return createAsyncPlaceholder(
         asyncFactory,
@@ -39246,7 +39246,7 @@ var Transition = {
       oldChild.data &&
       !isSameChild(child, oldChild) &&
       !isAsyncPlaceholder(oldChild) &&
-      // #6687 component root is a comment node
+      // #6687 component root is a comments node
       !(oldChild.componentInstance && oldChild.componentInstance._vnode.isComment)
     ) {
       // replace old child transition data with fresh one
@@ -39698,7 +39698,7 @@ var startTagOpen = new RegExp(("^<" + qnameCapture));
 var startTagClose = /^\s*(\/?)>/;
 var endTag = new RegExp(("^<\\/" + qnameCapture + "[^>]*>"));
 var doctype = /^<!DOCTYPE [^>]+>/i;
-// #7298: escape - to avoid being pased as HTML comment when inlined in page
+// #7298: escape - to avoid being pased as HTML comments when inlined in page
 var comment = /^<!\--/;
 var conditionalComment = /^<!\[/;
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Comment;
 use App\Http\Requests\PostCreateRequest;
 use App\Post;
 use App\Photo;
@@ -136,4 +137,14 @@ class AdminPostsController extends Controller
 
         return redirect('admin/posts/');
     }
+
+    public function post($id){
+
+        $post = Post::findOrFail($id);
+        $comments = Comment::all();
+        return view('post',compact('post','comments'));
+
+    }
+
+
 }
