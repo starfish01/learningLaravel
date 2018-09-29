@@ -141,7 +141,8 @@ class AdminPostsController extends Controller
     public function post($id){
 
         $post = Post::findOrFail($id);
-        $comments = Comment::all();
+        $comments = Comment::all()->where('post_id', $id);
+
         return view('post',compact('post','comments'));
 
     }

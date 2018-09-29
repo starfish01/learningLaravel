@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>Comments</h1>
+    <h1>Comments for Post </h1>
 
     <table class="table">
         <thead>
@@ -29,23 +29,23 @@
                     <td>
 
                         {!! Form::open(['method'=>'PATCH', 'action'=>['PostCommentsController@update', $comment->id]])!!}
-                            @if($comment->is_active == 1)
+                        @if($comment->is_active == 1)
 
-                                <input type="hidden" name="is_active" value="0">
+                            <input type="hidden" name="is_active" value="0">
 
-                                <div class="form-group">
-                                    {!! Form::submit('Hide Post', ['class'=>'btn btn-primary'])!!}
-                                </div>
+                            <div class="form-group">
+                                {!! Form::submit('Hide Post', ['class'=>'btn btn-primary'])!!}
+                            </div>
 
-                            @else
+                        @else
 
-                                <input type="hidden" name="is_active" value="1">
+                            <input type="hidden" name="is_active" value="1">
 
-                                <div class="form-group">
-                                    {!! Form::submit('Show Post', ['class'=>'btn btn-primary'])!!}
-                                </div>
+                            <div class="form-group">
+                                {!! Form::submit('Show Post', ['class'=>'btn btn-primary'])!!}
+                            </div>
 
-                            @endif
+                        @endif
                         {!! Form::close()!!}
 
                     </td>

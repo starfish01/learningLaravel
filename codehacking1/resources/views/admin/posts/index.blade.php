@@ -13,6 +13,7 @@
             <th>Category</th>
             <th>Created By</th>
             <th>Visable</th>
+            <th>Comments</th>
             <th>Updated</th>
             <th>Created</th>
 
@@ -26,11 +27,12 @@
 
                 <tr>
                     <td>{{$post->id}}</td>
-                    <td>{{$post->title}}</td>
+                    <td><a href="{{ route(('home.post'), $post->id) }}" target="_blank"> {{$post->title }}</a> </td>
                     <td><img src="{{ $post->photo ? $post->photo->file : 'http://placehold.it/50x50'}}" height="50px" alt=""></td>
                     <td>{{ $post->category ? $post->category['name'] : 'Uncategorised' }}</td>
                     <td>{{ $post->user['name'] }}</td>
                     <td></td>
+                    <td> <a href="{{ route('comments.show', $post->id)}}">View Comments</a></td>
                     <td>{{$post->updated_at->diffForHumans()}}</td>
                     <td>{{$post->created_at->diffForHumans()}}</td>
                     <td><a href="{{route('posts.edit',$post->id)}}" class="btn btn-primary">Edit</a> </td>

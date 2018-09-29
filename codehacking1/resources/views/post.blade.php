@@ -61,20 +61,23 @@
     @if($comments)
         @foreach($comments as $comment)
 
+            @if($comment->is_active == 1)
 
-
-        <div class="media">
-            <a class="pull-left" href="#">
-                <img class="media-object" height="64" src="{{ $comment->user->photo ? $comment->user->photo->file : 'http://placehold.it/64x64'}}" alt="">
-            </a>
-            <div class="media-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object" height="64" src="{{ $comment->user->photo ? $comment->user->photo->file : 'http://placehold.it/64x64'}}" alt="">
+                    </a>
+                    <div class="media-body">
                         <h4 class="media-heading">{{ $comment->user->name }}
                             <small>{{ $comment->created_at->diffForHumans() }}</small>
                         </h4>
-                        <p>{{ $comment->body }}</p>
-            </div>
-        </div>
 
+                        <p>{{ $comment->body }}</p>
+
+                    </div>
+
+                </div>
+            @endif
         @endforeach
     @endif
 

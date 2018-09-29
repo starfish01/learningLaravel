@@ -27,4 +27,10 @@ class Comment extends Model
     public function photo(){
         return $this->belongsTo('App\Photo');
     }
+
+    public function post(){
+        return $this->belongsTo('App\Post');
+    }
+
+
 }
