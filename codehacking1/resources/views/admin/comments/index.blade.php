@@ -69,26 +69,6 @@
         </tbody>
     </table>
 
-    <div class="row">
-
-        <h1>Create a new Category</h1>
-
-
-        <div class="col-md-6">
-            {!! Form::open(['method'=>'POST', 'action'=>'AdminCategoryController@store'])!!}
-
-            <div class="form-group">
-                {!! Form::label('name', 'Category:') !!}
-                {!! Form::text('name',null, ['class'=>'form-control']) !!}
-            </div>
-            <div class="form-group">
-                {!! Form::submit('Create Post', ['class'=>'btn btn-primary'])!!}
-            </div>
-
-            {!! Form::close()!!}
-        </div>
-        <div class="col-md-6"></div>
-    </div>
 
 
 

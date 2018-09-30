@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Comment;
+use App\CommentReply;
 use App\Http\Requests\PostCreateRequest;
 use App\Post;
 use App\Photo;
@@ -142,8 +143,9 @@ class AdminPostsController extends Controller
 
         $post = Post::findOrFail($id);
         $comments = Comment::all()->where('post_id', $id);
+        $commentReplies = CommentReply::all()->where('post_id', $id);
 
-        return view('post',compact('post','comments'));
+        return view('post',compact('post','comments', 'commentReplies'));
 
     }
 

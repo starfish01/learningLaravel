@@ -8358,3 +8358,16 @@ body {
   padding-top: 0px;
 }
 
+button.btn.btn-primary.toggle-replies.pull-right {
+  margin: 15px;
+}
+
+.reply-form-on-post-pages {
+  display: none;
+}
+
+.media {
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+

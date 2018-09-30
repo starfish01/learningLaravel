@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>Comments for Post </h1>
+    <h1>Comments for Post - {{$comments[0]->post->title}}</h1>
 
     <table class="table">
         <thead>
@@ -12,6 +12,7 @@
             <th>Poster</th>
             <th>Body Of Comment</th>
             <th>Date Added</th>
+            <th>Reply Comments</th>
 
         </tr>
         </thead>
@@ -60,6 +61,7 @@
                         {!! Form::close()!!}
 
                     </td>
+                    <td> <a href="{{ route('replies.show', $comment->id)}}">View Reply Comments</a></td>
                 </tr>
 
             @endforeach
@@ -68,28 +70,6 @@
 
         </tbody>
     </table>
-
-    <div class="row">
-
-        <h1>Create a new Category</h1>
-
-
-        <div class="col-md-6">
-            {!! Form::open(['method'=>'POST', 'action'=>'AdminCategoryController@store'])!!}
-
-            <div class="form-group">
-                {!! Form::label('name', 'Category:') !!}
-                {!! Form::text('name',null, ['class'=>'form-control']) !!}
-            </div>
-            <div class="form-group">
-                {!! Form::submit('Create Post', ['class'=>'btn btn-primary'])!!}
-            </div>
-
-            {!! Form::close()!!}
-        </div>
-        <div class="col-md-6"></div>
-    </div>
-
 
 
 @stop
