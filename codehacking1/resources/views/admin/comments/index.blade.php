@@ -22,7 +22,7 @@
             @foreach($comments as $comment)
                 <tr>
                     <td>{{ $comment->id }}</td>
-                    <td><a href="{{ route(('home.post'), $comment->post->id) }}" target="_blank"> {{$comment->post->title }}</a> </td>
+                    <td><a href="{{ route(('home.post'), $comment->post->slug) }}" target="_blank"> {{$comment->post->title }}</a> </td>
                     <td>{{ $comment->user->name }}</td>
                     <td> {{ $comment->body }}</td>
                     <td>{{ $comment->created_at->diffForHumans() }}</td>

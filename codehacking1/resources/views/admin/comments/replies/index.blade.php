@@ -2,7 +2,9 @@
 
 @section('content')
 
-    <h1>Reply Comments from comments in - {{$replies[0]->post->title}} - post</h1>
+    @if( count($replies) > 0)
+
+    <h1>Reply Comments from comments in - {{ $replies[0]->post->title }} - post</h1>
 
 
     <table class="table">
@@ -18,12 +20,12 @@
         </thead>
         <tbody>
 
-        @if($replies)
+
 
             @foreach($replies as $reply)
                 <tr>
                     <td>{{ $reply->id }}</td>
-                    <td><a href="{{ route(('home.post'), $reply->post->id) }}" target="_blank"> {{ $reply->post->title }}</a> </td>
+                    <td><a href="{{ route(('home.post'), $reply->post->slug) }}" target="_blank"> {{ $reply->post->title }}</a> </td>
                     <td>{{ $reply->user->name }}</td>
                     <td> {{ $reply->body }}</td>
                     <td>{{ $reply->created_at->diffForHumans() }}</td>
@@ -65,10 +67,14 @@
 
             @endforeach
 
-        @endif
+
 
         </tbody>
     </table>
 
+       @else
 
+        <h1>There are no reply comments from comments</h1>
+
+    @endif
 @stop

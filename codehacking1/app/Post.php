@@ -2,7 +2,9 @@
 
 namespace App;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 
 class Post extends Model
 {
@@ -29,6 +31,29 @@ class Post extends Model
 
     public function comments(){
         return $this->hasMany('App\Post');
+    }
+
+
+    use Sluggable;
+    use SluggableScopeHelpers;
+    /**
+     * Sluggable configuration.
+     *
+     * @var array
+     */
+    public function sluggable() {
+        return [
+            'slug' => [
+                'source'         => 'title',
+                'separator'      => '-',
+                'includeTrashed' => true,
+                'onUpdate'       =>true,
+            ]
+        ];
+    }
+
+    public function photoPlaceholder(){
+        return "http://placehold.it/50x50";
     }
 
 

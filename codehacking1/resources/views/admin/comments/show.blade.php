@@ -2,6 +2,8 @@
 
 @section('content')
 
+    @if($comments)
+
     <h1>Comments for Post - {{$comments[0]->post->title}}</h1>
 
     <table class="table">
@@ -18,12 +20,12 @@
         </thead>
         <tbody>
 
-        @if($comments)
+
 
             @foreach($comments as $comment)
                 <tr>
                     <td>{{ $comment->id }}</td>
-                    <td><a href="{{ route(('home.post'), $comment->post->id) }}" target="_blank"> {{$comment->post->title }}</a> </td>
+                    <td><a href="{{ route(('home.post'), $comment->post->slug) }}" target="_blank"> {{$comment->post->title }}</a> </td>
                     <td>{{ $comment->user->name }}</td>
                     <td> {{ $comment->body }}</td>
                     <td>{{ $comment->created_at->diffForHumans() }}</td>
@@ -61,15 +63,20 @@
                         {!! Form::close()!!}
 
                     </td>
-                    <td> <a href="{{ route('replies.show', $comment->id)}}">View Reply Comments</a></td>
+                    <td><a href="{{ route('replies.show', $comment->id)}}">View Reply Comments</a></td>
                 </tr>
 
             @endforeach
 
-        @endif
+
 
         </tbody>
     </table>
 
+        @else
+
+        <h1>No Comments</h1>
+
+    @endif
 
 @stop

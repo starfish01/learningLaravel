@@ -19,13 +19,13 @@
     <hr>
 
     <!-- Preview Image -->
-    <img height="250"  src="{{$post->photo ? $post->photo->file : 'http://placehold.it/50x50'}}"/>
+    <img height="250"  src="{{$post->photo ? $post->photo->file : $post->photoPlaceholder()}}"/>
 
     <hr>
 
     <!-- Post Content -->
 
-    <p>{{ $post->body }}</p>
+    <p>{!! $post->body !!}</p>
 
     <hr>
 
@@ -82,7 +82,7 @@
 
                         @if($commentReplies)
                             @foreach($commentReplies as $reply)
-                                @if($reply->comment_id == $comment->id)
+                                @if($reply->comment_id == $comment->id && $reply->is_active == 1)
 
                                     <div class="media">
                                         <a class="pull-left" href="#">
@@ -133,12 +133,27 @@
 
     <hr>
 
+
+    <div class="input-group">
+   <span class="input-group-btn">
+     <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
+       <i class="fa fa-picture-o"></i> Choose
+     </a>
+   </span>
+        <input id="thumbnail" class="form-control" type="text" name="filepath">
+    </div>
+    <img id="holder" style="margin-top:15px;max-height:100px;">
+
 @stop
 
 @section('scripts')
 
+    <script src="/vendor/laravel-filemanager/js/lfm.js"></script>
+
+
     <script>
 
+        $('#lfm').filemanager('image');
         $(".comment-reply-container .toggle-replies").click(function (){
 
             $(this).prev().slideToggle("slow");
@@ -149,5 +164,5 @@
         });
 
     </script>
-
+    <script src="/vendor/laravel-filemanager/js/lfm.js"></script>
 @stop

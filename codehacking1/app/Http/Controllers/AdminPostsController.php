@@ -12,6 +12,9 @@ use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Cviebrock\EloquentSluggable\Sluggable;
+use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
+use Illuminate\Database\Eloquent\Model;
 
 class AdminPostsController extends Controller
 {
@@ -22,7 +25,7 @@ class AdminPostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::paginate(2);
 
         return view('admin.posts.index', compact('posts'));
     }
@@ -56,6 +59,7 @@ class AdminPostsController extends Controller
             $photo = Photo::create(['path'=>$name]);
             $input['photo_id'] = $photo->id;
         }
+
 
         Post::create($input);
 
@@ -139,11 +143,13 @@ class AdminPostsController extends Controller
         return redirect('admin/posts/');
     }
 
-    public function post($id){
 
-        $post = Post::findOrFail($id);
-        $comments = Comment::all()->where('post_id', $id);
-        $commentReplies = CommentReply::all()->where('post_id', $id);
+    public function post($slug){
+
+        $post = Post::findBySlugOrFail($slug);
+
+        $comments = Comment::all()->where('post_id', $post->id);
+        $commentReplies = CommentReply::all()->where('post_id', $post->id);
 
         return view('post',compact('post','comments', 'commentReplies'));
 

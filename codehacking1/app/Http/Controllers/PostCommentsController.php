@@ -65,7 +65,7 @@ class PostCommentsController extends Controller
     public function show($id)
     {
         //
-        $comments = Comment::all()->where('post_id', $id);
+        $comments = Comment::where('post_id', $id)->get();
         return view('admin.comments.show',compact('comments'));
     }
 
@@ -91,7 +91,7 @@ class PostCommentsController extends Controller
     {
         //
         Comment::findOrFail($id)->update($request->all());
-        return redirect('admin/comments');
+        return redirect()->back();
 
     }
 

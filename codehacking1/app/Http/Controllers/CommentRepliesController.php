@@ -69,10 +69,9 @@ class CommentRepliesController extends Controller
     public function show($id)
     {
         //
-        $replies = CommentReply::all()->where('comment_id', $id);
-        return view('admin.comments.replies.index', compact('replies'));
-        return $replies;
+        $replies = CommentReply::where('comment_id', $id)->get();
 
+        return view('admin.comments.replies.index', compact('replies'));
     }
 
     /**
@@ -107,5 +106,8 @@ class CommentRepliesController extends Controller
     public function destroy($id)
     {
         //
+        CommentReply::findOrFail($id)->delete();
+        return redirect()->back();
+
     }
 }

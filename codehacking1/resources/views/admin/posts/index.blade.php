@@ -27,7 +27,7 @@
 
                 <tr>
                     <td>{{$post->id}}</td>
-                    <td><a href="{{ route(('home.post'), $post->id) }}" target="_blank"> {{$post->title }}</a> </td>
+                    <td><a href="{{ route(('home.post'), $post->slug ) }}" target="_blank"> {{$post->title }}</a> </td>
                     <td><img src="{{ $post->photo ? $post->photo->file : 'http://placehold.it/50x50'}}" height="50px" alt=""></td>
                     <td>{{ $post->category ? $post->category['name'] : 'Uncategorised' }}</td>
                     <td>{{ $post->user['name'] }}</td>
@@ -44,6 +44,14 @@
 
         </tbody>
     </table>
+
+    <div class="row">
+        <div class="col-sm-6 col-offset-5">
+
+            {{$posts->render()}}
+
+        </div>
+    </div>
 
 
 @stop
