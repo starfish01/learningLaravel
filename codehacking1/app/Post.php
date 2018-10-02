@@ -58,10 +58,12 @@ class Post extends Model
 
     public function countComments(){
 
-
         return Comment::all()->where('post_id', $this->id)->count();
-
     }
 
+    public function categories(){
+
+        return Category::all();
+    }
 
 }

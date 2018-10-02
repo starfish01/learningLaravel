@@ -93,32 +93,24 @@
             <!-- Blog Categories Well -->
             <div class="well">
                 <h4>Blog Categories</h4>
+
+                @if($post->categories())
+
                 <div class="row">
-                    <div class="col-lg-6">
-                        <ul class="list-unstyled">
-                            <li><a href="#">Category Name</a>
-                            </li>
-                            <li><a href="#">Category Name</a>
-                            </li>
-                            <li><a href="#">Category Name</a>
-                            </li>
-                            <li><a href="#">Category Name</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-6">
-                        <ul class="list-unstyled">
-                            <li><a href="#">Category Name</a>
-                            </li>
-                            <li><a href="#">Category Name</a>
-                            </li>
-                            <li><a href="#">Category Name</a>
-                            </li>
-                            <li><a href="#">Category Name</a>
-                            </li>
-                        </ul>
-                    </div>
+                        @foreach( $post->categories() as $key => $cat )
+
+                        @if($key % 2 )
+                            <div class="col-lg-6">{{$cat->name}}</div>
+
+                            @else
+                            <div class="col-lg-6">{{$cat->name}}</div>
+
+                            @endif
+
+                        @endforeach
+
                 </div>
+                @endif
                 <!-- /.row -->
             </div>
 
