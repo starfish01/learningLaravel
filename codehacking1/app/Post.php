@@ -56,5 +56,12 @@ class Post extends Model
         return "http://placehold.it/50x50";
     }
 
+    public function countComments(){
+
+
+        return Comment::all()->where('post_id', $this->id)->count();
+
+    }
+
 
 }

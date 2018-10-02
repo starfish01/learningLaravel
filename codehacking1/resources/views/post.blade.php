@@ -6,6 +6,7 @@
     <!-- Title -->
     <h1>{{ $post->title }}</h1>
 
+
     <!-- Author -->
     <p class="lead">
         by <a href="#">{{ $post->user->name }}</a>

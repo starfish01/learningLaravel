@@ -21,6 +21,7 @@
         </thead>
         <tbody>
 
+
         @if($posts)
 
             @foreach($posts as $post)
@@ -32,7 +33,12 @@
                     <td>{{ $post->category ? $post->category['name'] : 'Uncategorised' }}</td>
                     <td>{{ $post->user['name'] }}</td>
                     <td></td>
-                    <td> <a href="{{ route('comments.show', $post->id)}}">View Comments</a></td>
+                    <td>
+                        @if($post->countComments() != 0)
+                        <a href="{{ route('comments.show', $post->id)}}"> {{ $post->countComments() }} Comment/s</a></td>
+                    @else
+                        There are no comments
+                    @endif
                     <td>{{$post->updated_at->diffForHumans()}}</td>
                     <td>{{$post->created_at->diffForHumans()}}</td>
                     <td><a href="{{route('posts.edit',$post->id)}}" class="btn btn-primary">Edit</a> </td>

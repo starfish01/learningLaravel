@@ -66,6 +66,12 @@ class PostCommentsController extends Controller
     {
         //
         $comments = Comment::where('post_id', $id)->get();
+
+
+        if(!count($comments)){
+            return "empty";
+        }
+
         return view('admin.comments.show',compact('comments'));
     }
 
