@@ -66,15 +66,13 @@
     <div class="row">
 
         <!-- Blog Post Content Column -->
-        <div class="col-lg-8">
-
-
+        <div class="col-sm-8">
             @yield('content')
         </div>
 
 
         <!-- Blog Sidebar Widgets Column -->
-        <div class="col-md-4">
+        <div class="col-sm-4">
 
             <!-- Blog Search Well -->
             <div class="well">
@@ -91,28 +89,7 @@
             </div>
 
             <!-- Blog Categories Well -->
-            <div class="well">
-                <h4>Blog Categories</h4>
-
-                @if($post->categories())
-
-                <div class="row">
-                        @foreach( $post->categories() as $key => $cat )
-
-                        @if($key % 2 )
-                            <div class="col-lg-6">{{$cat->name}}</div>
-
-                            @else
-                            <div class="col-lg-6">{{$cat->name}}</div>
-
-                            @endif
-
-                        @endforeach
-
-                </div>
-                @endif
-                <!-- /.row -->
-            </div>
+            @include('includes.blog-categories-side-panel')
 
             <!-- Side Widget Well -->
             <div class="well">

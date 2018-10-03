@@ -150,10 +150,11 @@ class AdminPostsController extends Controller
 
         $post = Post::findBySlugOrFail($slug);
 
+        $categories = Category::all();
         $comments = Comment::all()->where('post_id', $post->id);
         $commentReplies = CommentReply::all()->where('post_id', $post->id);
 
-        return view('post',compact('post','comments', 'commentReplies'));
+        return view('post',compact('post','comments', 'commentReplies','categories'));
 
     }
 

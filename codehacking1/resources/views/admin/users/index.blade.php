@@ -35,8 +35,8 @@
                     <td>{{$user->email}}</td>
                     <td>{{$user->role['name']}}</td>
                     <td>{{$user->is_active == 1 ? 'Active' : 'Inactive'}}</td>
-                    <td>{{$user->updated_at->diffForHumans()}}</td>
-                    <td>{{$user->created_at->diffForHumans()}}</td>
+                    <td>{{$user->updated ? $user->updated_at->diffForHumans() : 'NO DATA'}}</td>
+                    <td>{{$user->created_at ? $user->created_at->diffForHumans() : 'NO DATA'}}</td>
                     <td><a href="{{route('users.edit',$user->id)}}" class="btn btn-primary">Edit</a> </td>
                 </tr>
 
